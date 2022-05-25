@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: links
+  labels:
+    app: links-nginx
+  namespace: links
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: links-nginx
+  template:
+    metadata:
+      labels:
+        app: links-nginx
+    spec:
+      containers:
+      - name: links
+        image: benvon/littlelink:latest
+        ports:
+        - containerPort: 80
+      # pull secret created via CLI and is stored in Bitwarden
+      imagePullSecrets:
+      - name: regcred

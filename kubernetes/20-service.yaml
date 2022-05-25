@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: links
+  namespace: links
+spec:
+  selector:
+    app: links-nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

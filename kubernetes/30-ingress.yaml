@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: links-ingress
+  namespace: links
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  #ingressClassName: traefik
+  rules:
+    - host: links.benvon.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name:  links
+                port:
+                  number: 80
