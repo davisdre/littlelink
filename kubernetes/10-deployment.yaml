@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: links
-        image: benvon/littlelink:latest
+        image: docker pull ghcr.io/benvon/littlelink_docker:main
         ports:
         - containerPort: 80
         resources:
