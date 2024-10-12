@@ -6,7 +6,7 @@ metadata:
     app: links-nginx
   namespace: links
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: links-nginx
@@ -20,6 +20,10 @@ spec:
         image: benvon/littlelink:latest
         ports:
         - containerPort: 80
-      # pull secret created via CLI and is stored in Bitwarden
-      imagePullSecrets:
-      - name: regcred
+        resources:
+          limits:
+            memory: 512MiB
+            cpu: 256m
+          requests:
+            memory: 512 MiB
+            cpu: 256m

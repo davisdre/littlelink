@@ -1,5 +1,7 @@
 # LittleLink (Docker version)
 
+[![Quality Gate Status](https://sonarqube.benvon.net/api/project_badges/measure?project=benvon_littlelink_docker_e827185b-78bf-4d53-812d-66b4270e2b3d&metric=alert_status&token=sqb_03a754ffe120c7481c73fad2afb674f49b9554e7)](https://sonarqube.benvon.net/dashboard?id=benvon_littlelink_docker_e827185b-78bf-4d53-812d-66b4270e2b3d)
+
 This project is a fork of [LittleLink](https://github.com/sethcottle/littlelink). I wanted to create a Docker version of this project that is not modify and kept to true original. And that is what I have done here with the exception of creating the docker files in this repo.
 
 LittleLink is a lightweight DIY alternative to services like [Linktree](https://linktr.ee)
