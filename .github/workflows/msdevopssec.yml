@@ -1,0 +1,42 @@
+name: MSDO
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  sample:
+    name: Microsoft Security DevOps
+
+    # Windows and Linux agents are supported
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+      actions: read
+      # Write access for security-events is only required for customers looking for MSDO results to appear in the codeQL security alerts tab on GitHub (Requires GHAS)
+      security-events: write
+
+    steps:
+
+      # Checkout your code repository to scan
+    - uses: actions/checkout@latest
+
+      # Run analyzers
+    - name: Run Microsoft Security DevOps
+      uses: microsoft/security-devops-action@latest
+      id: msdo
+   
+      # Upload alerts to the Security tab - required for MSDO results to appear in the codeQL security alerts tab on GitHub (Requires GHAS)
+    - name: Upload alerts to Security tab
+      uses: github/codeql-action/upload-sarif@latest
+      with:
+        sarif_file: ${{ steps.msdo.outputs.sarifFile }}
+
+      # Upload alerts file as a workflow artifact - required for MSDO results to appear in the codeQL security alerts tab on GitHub (Requires GHAS)
+    # - name: Upload alerts file as a workflow artifact
+    #  uses: actions/upload-artifact@v3
+    #  with:  
+    #    name: alerts
+    #    path: ${{ steps.msdo.outputs.sarifFile }}
