@@ -4,5 +4,7 @@
 /.github
 .gitignore
 LICENSE.md
-privacy.html
 README.md
+.dockerignore
+docker-compose.yml
+Dockerfile
